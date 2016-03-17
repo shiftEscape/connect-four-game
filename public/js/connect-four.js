@@ -65,18 +65,19 @@
         this.getAvailableCell().pinToBoard();
         this.setCellData().updateCounters();
 
-        // Check draw state first
-        if(this.checkDrawState()) {
-          alert('DRAW!');
-          resetBoard();
-          return false;
-        }
-
         // Check total inputs from player before checking victory
         if(counters['player'+this.id] >= 4 && this.checkVictory()) {
           alert(this.name + ' wins!');
-          resetBoard();
+          // Reset board after 3 seconds
+          setTimeout(function() {
+            resetBoard();
+          }, 3000);
         } else {
+          if(this.checkDrawState()) { // Check draw state
+            alert('DRAW!');
+            resetBoard();
+            return false;
+          }
           this.setNextTurn();
           $this.trigger('mouseenter');
         }
