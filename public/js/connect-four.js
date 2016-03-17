@@ -71,7 +71,7 @@
           // Reset board after 3 seconds
           setTimeout(function() {
             resetBoard();
-          }, 3000);
+          }, 1500);
         } else {
           if(this.checkDrawState()) { // Check draw state
             alert('DRAW!');
